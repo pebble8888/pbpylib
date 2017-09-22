@@ -103,7 +103,8 @@ class EC:
             if (y1 == 0):
                 return Point.zero()
             else:
-                lm = (3 * (x1 **2) + 2 * self.a * x1 + self.b) * self.inverse(2 * y1)
+                lm = ((3 * (x1 **2) + 2 * self.a * x1 + self.b) % self.p) * self.inverse(2 * y1)
+                lm = lm % self.p
                 x3 = (lm ** 2) - self.a - x1 - x2
                 y3 = - lm *(x3-x1) - y1
         else:
